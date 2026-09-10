@@ -336,7 +336,7 @@ What is going on here? Each line within this function (x,y,z) creates a new colu
 
 (@) What is going on in row z? Can you explain the logic here?
 
->
+> row z is checking the values of row x and row y and running the equation listed in 331 with those values
 
 
 ## Loading Dataframes from Packages
