@@ -74,44 +74,44 @@
 
 ---
 
-### Challenge 3 (Optional): [Brief descriptive title]
+### Challenge 3 (Optional): [Getting the earliest year for the gayGuides Data set]
 
 **What I was trying to do:**
-[Describe the task or problem]
+[I was trying to get the earliest year in the year column for the gayguides data set]
 
 **What went wrong:**
-[Describe the error, confusion, or roadblock]
+[I couldn't get it to spit out one date, it just originally kept giving me the table]
 
 **My problem-solving process:**
-1. [First attempt - what you did and what happened]
-2. [Second attempt - what you did and what happened]
+1. [I tried using the floor function in different places to see if that could solve the issue, but it kept spitting out more data than the earliest year]
+2. [I looked up a potential solution on google and in the R help section it said to use the min() function, which I tried and it gave me the year of 1965.]
 3. [Additional attempts if relevant]
 
 **Resources I consulted:**
 - [ ] Documentation for [package/function]
 - [ ] Stack Overflow: [describe what you searched for]
-- [ ] Course materials: [which ones]
+- [x] Course materials: [earlier possible functions in the worksheet]
 - [ ] Class discussion (Canvas, Slack, or in person)
 - [ ] Office hours
-- [ ] Other: [describe]
+- [x] Other: [google]
 
 **Resolution:**
-[What ultimately worked or where you're still stuck]
+[The min function fixed the issue I kept running into]
 
 **What I learned:**
-[What did this teach you about the concept, the tool, or problem-solving?]
+[Sometimes googling the answer here is going to be necessary. ]
 
 ---
 
 ## Reflection
 
 **What I understand well now:**
-[What clicked for you this week?]
+[The basic syntax of the code]
 
 **What I'm still confused about:**
-[What remains unclear? What questions do you have?]
+[If we were to use data that goes from BCE->AD, what steps would we need to take to get the same intended outputs?]
 
 **Connection to historical research:**
-[How might this week's skills apply to your research?]
+[Using the tables here could give more insight into the frequency of a data point. e.g, for the gayguides and years, maybe we could find the year(s) that show up most frequently and conduct analysis on why those years had the most data.]
 
 

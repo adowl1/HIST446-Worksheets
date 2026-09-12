@@ -348,7 +348,7 @@ library(DigitalMethodsData)
 
 What kind of datasets are available in this package? We can use the help documentation to find out. 
 
-Run `help(package="DigitalMethodsData")` in your console to pull up a list of datasets included in this package. 
+Run `help(package="DigitalMethodsData")` in your console to pull up a list of datasets included in this package. `
 
 For demonstration purposes we'll use the `gayguides` data here. Pull up the help documentation for this dataset. What does the documentation tell you abou the scope of this dataset? 
 
@@ -374,17 +374,23 @@ That gives us the first 6 rows of data. Its really useful if you just want to pe
 
 (@) The default is to print six rows of data. Can you modify the above code to print out the first 10 rows? 
 ```{r}
+?head
+head(gayguides,10)
 
+```
+
+```{r}
+typeof(gayguides)
 ```
 
 (@) Can you find the last 6 rows of data? 
 ```{r}
-
+tail(gayguides,6)
 ```
 
 (@) Reflect on the previous two prompts. How did you figure these out? 
 
->
+> I used the help function to figure out how head worked and saw that you could put an integer to get the amount of rows you wanted. In that same help article, it showed tail as a way to get the end of that data.
 
 The `str()` function is another very useful function for understanding a dataset. It compactly displays the internal structure of an R object. 
 ```{r}
@@ -405,28 +411,33 @@ gayguides$title[500]
 
 (@) Break this down. Whats going on here? What do each of the elements of this code mean? (gayguides, $, title, and [500]) 
 
->
+>Gayguides : defining which dataset is being used. $: tells the code to find a specific segment. title: gives the code the specific segment $ is looking for. [500]: displays the 500th item in the "title" segment.
 
 (@) The Year variable contains the year (numeric) of each entry. Can you find the earliest year in this dataset? (Using code, don't cheat and use the documentation!)
 ```{r}
-
+min(gayguides$Year)
 ```
 
 
 (@) How about the latest year? 
 ```{r}
-
+max(gayguides$Year)
 ```
 
 
 (@) Add another dataset from `DigitalMethodsData`. How many observations are included in this dataset? Run through some of the examples from above to learn about the dataset.
 ```{r}
-
+data(statepopulations)
+str(statepopulations)
+```
+``` {r}
+head(statepopulations,10)
+tail(statepopulations,20)
 ```
 
 (@) What did you learn about the dataset? What can you tell me about it? 
 
->
+> There are 28 different columns, with 24 of them relating to the census data and population of the territory/state for that census. There's a column called "GISjoin" which may be used for spatial analysis in GIS? The dataset also differentiates between when the state was a territory and gained statehood, and provides or excludes population numbers based on that switch.
 
 
 
