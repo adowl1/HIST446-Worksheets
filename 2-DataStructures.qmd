@@ -1,7 +1,7 @@
 ---
 title: "Worksheet 2: Data Structures"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "9/14/26"
 format:
   html:
     df-print: paged
@@ -83,7 +83,8 @@ x[c(3,3)]
 ```
 (@) Create your own vector and return three values using the subsetting method above. 
 ```{r}
-
+y <-c(6,7,8,999,8,2,1,2)
+y[c(4,2)]
 ```
 
 
@@ -94,7 +95,7 @@ x[-c(3, 1)]
 
 (@) What happened here? Describe this in your own words. 
 
->
+> the code searches for the specific values at those positions in the vector. once the code finds that value, the code gets rid of that value.
 
 You can use either positive or negative integers to subset a vector but you **cannot mix the two**.
 
@@ -111,7 +112,7 @@ x[x > 7]
 
 (@) What is going on in each of the lines above? Describe it in your own words. 
 
->
+> Line 105 -- code is going item by item in the argument. if that item was assigned 'true', it's printed, else it is not printed. since this logic is only appleid to 1:5, 10.2, the last item in the vector, does not show up. Line 110: searches all items in the vector, if this item is greater than 7, it prints.
 
 Nothing returns the original vector. This isn't that useful here but can come in handy when you have more complex structures like matrices and arrays. 
 ```{r}
@@ -124,12 +125,14 @@ If your vector is named, you can also use character vectors to return elements w
 y[c("d")]
 ```
 (@) What happened here? Explain this in your own words. 
+124 code assigns a corresponding letter to the first 4 items in the 'x' vector. in 125, the code is asked to print item d from vector 'y' with its corresponding integer from vector 'x' 
 
 #### Matrices
 
 We can subset higher dimensional structures, like matrices, too. First lets define a matrix. In R, **a matrix** is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns. Since you are only working with rows and columns, a matrix is called two dimensional. To create a matrix you can use the `matrix()` function.
 
 > **Why does a historian need matrices?** Honestly, you will rarely build one by hand. We cover them for two reasons. First, data frames behave like a cross between a list and a matrix, so the subsetting you learn here transfers directly. Second, when we get to topic modeling in Worksheet 9, we will build a **document-term matrix** -- documents down the side, words across the top, counts in the cells. That is exactly the structure you are about to practice on, just much larger.
+
 ```{r}
 matrix(1:9, byrow = TRUE, nrow = 3)
 ```
@@ -142,12 +145,13 @@ In the `matrix()` function:
 
 (@) You try now, create a matrix that had five rows with numbers that range from 25 to 49. 
 ```{r}
-
+matrix(25:49, byrow = TRUE, nrow = 5)
 ```
 
 (@) Can you create a matrix that has 3 rows with only even numbers from 2 to 18? 
 ```{r}
 
+matrix(c(2,4,6,8,10,12,14,16,18), byrow = TRUE, nrow = 3)
 ```
 
 ##### Subsetting Matricies 
@@ -188,7 +192,7 @@ data("gayguides")
 
 To subset this data we could pull two particular columns like this: 
 ```{r}
-#gayguides[2:3]
+gayguides[2:3]
 ```
 That returns columns 2 and 3 (including every single row!). 
 
@@ -199,22 +203,24 @@ gayguides[1:3,]
 
 (@) Why is this different? What do we get compared to the previous example? 
 
->
+> This code is subsetting the first three rows of the data. So, it's giving us all 14 columns, but only 3 variables. 
 
 (@) Can you find just the city and state for the first 5 entries? 
 ```{r}
+gayguides[1:5,8:9,]
+
 
 ```
 
 (@) How about the street address and type for rows 2,555 to 2,560?
 
 ```{r}
-
+gayguides[2555:2560,5:6]
 ```
 
 (@) Load another dataset from `DigitalMethodsData`. Subset it to find some element of the data. Write the code below and then explain what element of the data you wanted to subset and why:
 ```{r}
-
+data("statepopulations")
 ```
 
 > 
@@ -234,10 +240,11 @@ gayguides$city[100:110]
 
 (@) What does this code do? 
 
->
+> gayguides part tells the code which dataset, the $city tells the code to look at the subset variable of cities, the [100:110] tells the code to bring out items 100 through 110
 
 (@) Can you find all the titles of locations in South Carolina? (Hint: You'll need to use both `$` and `[]`)
 ```{r}
+gayguides$title
 
 ```
 

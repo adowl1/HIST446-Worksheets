@@ -1,7 +1,7 @@
 ---
 title: "Worksheet 1: R Basics"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "09/08/26"
 format:
   html:
     df-print: paged
@@ -34,10 +34,13 @@ Numbers can be used to do arithmetic.
 ```
 
 (@) You try, multiple two numbers. 
-
-
+```{r}
+10 * 10
+```
 (@) Can you multiply two numbers and then divide by the result? 
-
+```{r}
+(10*10)/2
+```
 The next type of value is a **string**. Strings are lines of text. Sometimes these are referred to as character vectors. To create a string, you add text between two quotation marks. For example: 
 ```{r}
 "Go Cardinals"
@@ -45,7 +48,7 @@ The next type of value is a **string**. Strings are lines of text. Sometimes the
 
 (@) Try to create your own string.
 ```{r}
-
+"Chirp Chirp"
 ```
 
 You can't add strings using `+` like you can numbers. But there is a function called `paste()` which concatenates character vectors into one. This function is _very_ useful and one you'll use a lot in a variety of circumstances. Here's what that looks like: 
@@ -56,12 +59,12 @@ paste("Hello", "Ball State Students")
 
 (@) Try it, add two strings together like the above example. 
 ```{r}
-
+paste("Boiler Up", "Hammer Down")
 ```
 
 (@) Can you explain what happened in 2-3 sentences? 
 
-> 
+> ## Code looks to paste the first string here (boiler up). After searching and pasting the phrase, looks for the second string (Hammer down)
 
 The last type are **logical** values like `TRUE` and `FALSE`. (Note that these are all caps.)
 
@@ -101,16 +104,16 @@ Logical Operators allow you to combine or change the results of comparisons.
 ```
 (@) Explain, what does the code on each line above do? 
 
->
+> 98: Checks to see if 5 equals 10, since false returns false. 99: checks to see if 3 is less than 4, since true returns true. 100: checks to see if 5 does not equal 10, since true returns true. 101: checks to see if 5 does not equal 5, since false returns false. 102: checks to see if 3 is equal to 4 OR 3, since 3 equals 3 returns true. 103: Checks to see if 3 does not equal 4 and if 3 does not equal 5. Since BOTH are true, returns as true.
 
 (@) Create your own comparison. 
 ```{r}
-
+ (10 * 10) == 100
 ```
 
 (@) Can you write code that checks if a year is between 1970 AND 1980? 
 ```{r}
-
+1970 <= 1975 & 1975 <= 1980
 ```
 
 ---
@@ -145,12 +148,12 @@ Whatever you prefer, be consistent and your future self will thank you when your
 
 (@) You try, create a variable and assign it a number: 
 ```{r}
-
+big.money <- 777
 ```
 
 (@) Can you assign a string to a variable?
 ```{r}
-
+colts.fans <- "Bleed Blue"
 ```
 
 Once we've assigned a variable we can use that variable to run calculations just like we did with raw numbers.
@@ -172,22 +175,28 @@ My.Calculation <- (x + x)*10
 
 (@) You try. Assign a number to x and a number to y. Add those two numbers together.
 ```{r}
-
+x <- 20
+y <- 10
+x + y
 ```
 
 (@) Can you take `x` and `y` and multiply the result by 5? 
 ```{r}
-
+(x + y) * 5
 ```
 
 (@) Try creating two variables with names other than `x ` and `y`. Descriptive names tend to be more useful. Can you multiply the contents of your variables? 
 ```{r}
-
+blackjack <- 21
+never.hit.on <- 17
+blackjack * never.hit.on
 ```
 
 (@) Try creating two variables that store strings. Can you concatenate those two variables together? 
 ```{r}
-
+tom.cruise <- "Movie Star"
+victor.cruz <- "Football Star"
+paste(tom.cruise, victor.cruz)
 ```
 
 ### Vectors
@@ -227,7 +236,7 @@ my.numbers * 2
 
 (@) Explain in a few sentences, what happened in the code above?
 
->
+> # code checks for the item in that list position, then multiplies by 2. For example, looks at integer in position 1 (2), and multiplies by 2 giving 4. Then it checks item 2 (4) multiplies by 2 to get 8, and so on.
 
 Lets try something slightly different. 
 ```{r}
@@ -236,11 +245,12 @@ my.numbers[3] * 2
 
 (@) Explain in a few sentences, what happened in the code above? 
 
->
+> code retrieves the third item in the my.numbers list which is 6. then multiplies that by 2. 
 
 (@) You try, create a list of five items and store it in a descriptive variable. 
 ```{r}
-
+my.straight <- c(2,3,4,5,6)
+my.straight
 ```
 
 
@@ -274,14 +284,20 @@ We can ask R to pull up the documentation like this:
 (@) Now you try, find the documentation for the function  `signif()`.
 ```{r}
 #| eval: false
-
+?signif()
 ```
 
 In real life, you typically you wouldn't want to store this code in your script file. You probably don't need to pull up the documentation for the function every time you run that piece of code. But for the purposes of this worksheet we're adding it to our `.qmd` document. Notice that I included ``#| eval: false`` in both code chunks above -- this is what stops the chunks from executing every time you render your worksheet as an HTML file.
 
 (@) Use the console to find the documentation for `floor()`? Try it and then tell me, what does that function do? 
-
->
+```{r}
+#| eval: false
+?floor()
+floor(101/5)
+floor(3*4)
+101/5
+```
+> hmm i honestly don't have a clue. it's cutting off the decimals but i'm unsure about the language it's using in the help screen and how it's different from truncating it.
 
 ### Data Frames & Packages
 
@@ -320,7 +336,7 @@ What is going on here? Each line within this function (x,y,z) creates a new colu
 
 (@) What is going on in row z? Can you explain the logic here?
 
->
+> row z is checking the values of row x and row y and running the equation listed in 331 with those values
 
 
 ## Loading Dataframes from Packages
@@ -339,7 +355,7 @@ library(DigitalMethodsData)
 
 What kind of datasets are available in this package? We can use the help documentation to find out. 
 
-Run `help(package="DigitalMethodsData")` in your console to pull up a list of datasets included in this package. 
+Run `help(package="DigitalMethodsData")` in your console to pull up a list of datasets included in this package. `
 
 For demonstration purposes we'll use the `gayguides` data here. Pull up the help documentation for this dataset. What does the documentation tell you abou the scope of this dataset? 
 
@@ -365,17 +381,23 @@ That gives us the first 6 rows of data. Its really useful if you just want to pe
 
 (@) The default is to print six rows of data. Can you modify the above code to print out the first 10 rows? 
 ```{r}
+?head
+head(gayguides,10)
 
+```
+
+```{r}
+typeof(gayguides)
 ```
 
 (@) Can you find the last 6 rows of data? 
 ```{r}
-
+tail(gayguides,6)
 ```
 
 (@) Reflect on the previous two prompts. How did you figure these out? 
 
->
+> I used the help function to figure out how head worked and saw that you could put an integer to get the amount of rows you wanted. In that same help article, it showed tail as a way to get the end of that data.
 
 The `str()` function is another very useful function for understanding a dataset. It compactly displays the internal structure of an R object. 
 ```{r}
@@ -386,7 +408,7 @@ There is a ton of useful info here. First, we see that this is a data.frame and 
 
 The `$` operator allows us to get a segment of the data. 
 ```{r}
-head(gayguides$title)
+head(gayguides[1,6])
 ```
 
 While that's useful, this particular dataset happens to be sorted by title. So the first rows are all labeled some version of B.A. beach. That's not very useful. What if we want to see the 500th item in this list? Well, we can pull that up like this: 
@@ -396,28 +418,33 @@ gayguides$title[500]
 
 (@) Break this down. Whats going on here? What do each of the elements of this code mean? (gayguides, $, title, and [500]) 
 
->
+>Gayguides : defining which dataset is being used. $: tells the code to find a specific segment. title: gives the code the specific segment $ is looking for. [500]: displays the 500th item in the "title" segment.
 
 (@) The Year variable contains the year (numeric) of each entry. Can you find the earliest year in this dataset? (Using code, don't cheat and use the documentation!)
 ```{r}
-
+min(gayguides$Year)
 ```
 
 
 (@) How about the latest year? 
 ```{r}
-
+max(gayguides$Year)
 ```
 
 
 (@) Add another dataset from `DigitalMethodsData`. How many observations are included in this dataset? Run through some of the examples from above to learn about the dataset.
 ```{r}
-
+data(statepopulations)
+str(statepopulations)
+```
+``` {r}
+head(statepopulations,10)
+tail(statepopulations,20)
 ```
 
 (@) What did you learn about the dataset? What can you tell me about it? 
 
->
+> There are 28 different columns, with 24 of them relating to the census data and population of the territory/state for that census. There's a column called "GISjoin" which may be used for spatial analysis in GIS? The dataset also differentiates between when the state was a territory and gained statehood, and provides or excludes population numbers based on that switch.
 
 
 
