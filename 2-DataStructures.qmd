@@ -221,6 +221,9 @@ gayguides[2555:2560,5:6]
 (@) Load another dataset from `DigitalMethodsData`. Subset it to find some element of the data. Write the code below and then explain what element of the data you wanted to subset and why:
 ```{r}
 data("statepopulations")
+(statepopulations[c(1,6,8,10),c(2,12,13)])
+                  
+# state populations for the first 4 states listed while eliminating the N/A from the territories to clean up the table if you were searching for change from 1860 -> 1870
 ```
 
 > 
@@ -229,8 +232,8 @@ Another useful operator to know is `$` which we used a little bit in the previou
  
 So for example both of these produce the same result. One is just easier to type. Because the output here is so large, I've commented these two lines out. Uncomment them and the run the block.
 ```{r R.options=list(max.print=10)}
-#gayguides["title"]
-#gayguides$title
+gayguides["title"]
+gayguides$title
 ```
 
 Notice the above output is _huge_. We can combine `$` and `[` to drill down more specifically like we did earlier.
@@ -243,9 +246,9 @@ gayguides$city[100:110]
 > gayguides part tells the code which dataset, the $city tells the code to look at the subset variable of cities, the [100:110] tells the code to bring out items 100 through 110
 
 (@) Can you find all the titles of locations in South Carolina? (Hint: You'll need to use both `$` and `[]`)
+# got stuck here, coming back later
 ```{r}
-gayguides$title
-
+gayguides$title[gayguides$state == "SC"]
 ```
 
 We can also use `$` to create a new column in `gayguides`. 
@@ -280,6 +283,8 @@ Stick with `%>%` in your worksheets so your code matches the examples. But when 
 
 (@) Use the pipe to subset the gayguides data to get the title column, then look at the first 20 entries.
 ```{r}
+df <- gayguides$title
+df %>% head(20)
 ```
 
 ## Putting It All Together: Historical Data Challenges
@@ -295,7 +300,8 @@ Hint: Break this into steps:
    - Step 3: Combine these conditions
    - Step 4: Use this combined condition to subset the data
 ```{r}
-
+#step 1
+gayguides$state == "CA"
 ```
 
 (@) The `amenityfeatures` column contains codes about each location. Can you find all entries that mention "(G)" for girls/women anywhere in their amenity features during 1975? How many locations specifically catered to women that year?
