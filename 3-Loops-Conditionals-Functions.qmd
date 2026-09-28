@@ -1,7 +1,7 @@
 ---
 title: "Worksheet 3: Loops, Conditionals and Functions"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "9-28-26"
 format:
   html:
     df-print: paged
@@ -75,12 +75,19 @@ if (x > 90) {
 
 (@) You are teaching Social Studies at a High School in Muncie, Indiana. Your class has an enrollment cap of 30 students. Write an `if` statement that calculates whether the enrollment cap has been met. 
 ```{r}
-
+enrollment_cap <- 30
+b <- sample(1:50, 1)
+if (b >= 30) {
+  "NO MORE ROOM!"
+} else  {
+  print("You still have slots left",)
+}
 ```
 
 (@) Create a list of presidents and store it in a variable. Use an `if` statement to check if the number of presidents in the list is more than 5. If its not, indicate that too. 
 ```{r}
-
+strictly_presidental <- c("Taft", "Roosevelt", "Coolidge", "Harding", "Hoover")
+if strictly_presidental 
 ```
 
 (@) You can also use an if statement to check a variable in a dataframe. How might you use an if statement to check if the GayGuides dataset contains any year after 1990? (Hint: first try to figure out how to determine the latest year in the dataframe and then build an if statement that checks that and prints something out if its true or false. You should think about what kind of value in contained in the Year column, how to access it, and how to check for the latest value.) 
