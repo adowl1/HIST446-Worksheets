@@ -1,8 +1,8 @@
 ---
 title: "In-Class Exercise: Building a Database of Muncie Directories"
 subtitle: "From a printed source, to a table, to related tables"
-author: ""
-date: ""
+author: "AJD"
+date: "9-23-26"
 format:
   html:
     df-print: paged
@@ -59,14 +59,19 @@ cat(page_206$text)                                       # cat() prints the text
 Now look at the **scan** of the same page available online by clicking on this URL: [Page 206 in the Digital Media Repository](https://dmr.bsu.edu/digital/collection/MunCityDirs/id/10723) (printed "202" at the top). The number at the end of that link, `10723`, is the page's `pageptr`: the repository's own ID for this one page, the same number in the `pageptr` column of `pages`. Every page of every digitized volume has one.
 
 (@) Compare the scan with the text above. Name **three** things a reader of the scan knows that the OCR text gets wrong or loses.
+# 1. Address for the Dye works ad
+ 2. Boyce ad on the side
+ 3. Ad up top
 
 >
 
 (@) Find the page in this city directory volume that explains the directory's abbreviations (the table of contents on Page 7 tells you where). What does an asterisk before a name mean?
 
->
+> * == "Colored"
 
 ### Where did the sample table you loaded with `read_csv()` come from?
+  data folder in hist 446 -> citydir sample csv file
+ #
 
 The file in `data/` was made by asking the repository for each page's text, one page at a time. You can ask for page 206 yourself. Its address is an ordinary URL, built from the collection's name (`MunCityDirs`) and the page's pointer (`10723`):
 
@@ -84,13 +89,14 @@ if (is.null(live)) {
 
 (@) Notice the object that was fetched from the JSON request `live`. It's a list 66 elements. Go back to the scan of Page 206 at the DMR website. Can you figure out what those 66 elements refer to?
 
->
+
+> #some of these elements refer to the metadata from the DMR, some refer to actual observations, 
 
 The repository answered with a whole record for this one page. In a future worksheet, you'll write a loop that does this for many pages, politely. By the end of this code, we saved just one field, `full`, as `live_text`. 
 
 (@) Which three of the 66 fields became the three columns in `pages`?
 
->
+> dmrecord, title, text
 
 (@) Run the code chunk below to create a one-row table from the `live` object that has the same columns as the `pages` table and the values for page 206.
 ```{r}
@@ -107,7 +113,7 @@ identical(live_206, as_tibble(page_206)) # check to see if both are identitical
 
 (@) Explain each line in the code above. Remember: You can type `?function()` in your console to access the documentation for any of the functions used above. For example, write `?trimws` and see what happens.
 
-> 
+> 103: if is a conditional that checks if a condition is met. in this case, if the is.null function with the object live IS NOT EQUAL to 
 
 ------------------------------------------------------------------------
 
@@ -139,6 +145,10 @@ Notice: if you look closely, the mark before Calvin Davis's name is clear in the
 
 ```{r}
 
+by_hand <- tribble(~entry, ~surname, ~given,    ~spouse,    ~asterisk, ~occupation,                         ~employer,                ~address,    ~housing, ~notes,
+         2, "Davis", "Calvin", "NA", TRUE, "Laborer", "Whiteley", "923 Penn", "Res", "NA"           
+)
+by_hand
 ```
 
 (@) Your table has no row for Naomi, Pauline, or Anna, the wives in parentheses, and no column for a second job (look a few lines further down at Chas. S. Davis). What did the directory's publisher decide about women in these households? What could you do differently when building this table?

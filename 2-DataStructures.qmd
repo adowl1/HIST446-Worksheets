@@ -283,8 +283,7 @@ Stick with `%>%` in your worksheets so your code matches the examples. But when 
 
 (@) Use the pipe to subset the gayguides data to get the title column, then look at the first 20 entries.
 ```{r}
-df <- gayguides$title
-df %>% head(20)
+gayguides$title %>% head(20)
 ```
 
 ## Putting It All Together: Historical Data Challenges
@@ -300,25 +299,31 @@ Hint: Break this into steps:
    - Step 3: Combine these conditions
    - Step 4: Use this combined condition to subset the data
 ```{r}
-#step 1
-gayguides$state == "CA"
+gayguides$title[gayguides$state == "CA"] 
+ 
 ```
 
+```{r}
+gayguides$Year>1969[gayguides$Year<1980]
+## I've been trying this for a minute and i have no clue honestly
+```
 (@) The `amenityfeatures` column contains codes about each location. Can you find all entries that mention "(G)" for girls/women anywhere in their amenity features during 1975? How many locations specifically catered to women that year?
 ```{r}
 # Hint: You'll need to search within the amenityfeatures text
 # The str_detect() function might be useful, or you could use grepl()
+gayguides$amenityfeatures=="G"[gayguides$Year==1975]
 ```
 
 ### Challenge 2: Boston Women Voters
 
 Load the Boston Women Voters dataset and use subsetting to answer these historical questions:
 ```{r}
-
+data("BostonWomenVoters")
 ```
 
 (@) Find all women voters who were over 50 years old. Then find all the voters who were under the age of 50. How many were there? What can you say about the age distribution of women voters?
 ```{r}
+head(BostonWomenVoters)
 ```
 
 (@) Can you create a subset that includes only women voters who lived on "Main" street (the street name contains "Main")? How many were there? # Hint: You'll need to search within the street column. This will require a bit of googling and reading documentation. Look for a function that will allow you to search within a column.
