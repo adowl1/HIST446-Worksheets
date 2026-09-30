@@ -1,8 +1,8 @@
 ---
 title: "In-Class Exercise 3: Markup Bodies"
 subtitle: "Decisions hidden inside a database"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "9-30-26"
 format:
   html:
     theme: cosmo

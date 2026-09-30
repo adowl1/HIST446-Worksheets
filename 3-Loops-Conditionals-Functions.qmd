@@ -87,17 +87,24 @@ if (b >= 30) {
 (@) Create a list of presidents and store it in a variable. Use an `if` statement to check if the number of presidents in the list is more than 5. If its not, indicate that too. 
 ```{r}
 strictly_presidental <- c("Taft", "Roosevelt", "Coolidge", "Harding", "Hoover")
-if strictly_presidental 
+if (length(strictly_presidental) < 5) {
+  "so many presidents"
+} else {
+  "not enough presidents"
+}
 ```
 
 (@) You can also use an if statement to check a variable in a dataframe. How might you use an if statement to check if the GayGuides dataset contains any year after 1990? (Hint: first try to figure out how to determine the latest year in the dataframe and then build an if statement that checks that and prints something out if its true or false. You should think about what kind of value in contained in the Year column, how to access it, and how to check for the latest value.) 
 
 ```{r}
+if (max(gayguides$Year) > 1990) {
+  print("there is a year after 1990.")
+} else {print("there is not a year after 1990.")}
 ```
 
 (@) Reflect on the question above. How did you figure this out? What was the process you went through to build this chunk of code?
 
-> 
+> Remembered the max function and I wondered if i could apply it to gayguides$year as an argument. When i saw I could, i knew i needed a operation so i used >. then I knew i needed an if else statement to print a statement
 
 #### Loops
 
@@ -136,16 +143,28 @@ for (p in 1:length(presidents)) {
 **Hint:** You'll need a function to combine the output and some text of your choosing inside the function.
 
 ```{r}
-
+classes <- c("HIST 446", "HIST 462", "HIST 493", "POLS 293", "EDSE 380", "SS 395")
+for (m in 1:length(classes)) {
+  print(paste('I am enrolled in',classes[m])) }
 ```
 
 (@) Now let's practice with data. Create a loop that prints out the first 5 titles from the gayguides dataset. Hint: You'll need to loop from 1 to 5 and access `gayguides$title[i]`
 ```{r}
-
+titles <- gayguides$title[1:5]
+for (first_five in 1:length(titles)) {
+  print(titles[first_five])
+}
 ```
 
 (@) Can you modify the above loop to only print titles that contain the word "Bar"? (Hint: use grepl() to search for "Bar" in the title)
 ```{r}
+titles <- gayguides$title
+for (location in 1:length(titles)) {
+  if (grepl(titles, "bar", ignore.case = TRUE, perl = FALSE, fixed = FALSE, useBytes = FALSE) == TRUE) {
+    print(location)
+  }
+}
+grepl(gayguides$title, "bar")
 ```
 
 Sometimes we want our loop to terminate itself early. There are two statements that help us do that: 

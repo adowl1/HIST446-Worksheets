@@ -10,7 +10,8 @@
 #   ggplot(data, aes(x = ..., y = ...)) + geom_...() + labs(...)
 # =============================================================================
 
-library(tidyverse)   # includes ggplot2 and lubridate (for dates)
+library(tidyverse)   
+# includes ggplot2 and lubridate (for dates)
 
 bellevue <- read_csv("data/bellevue_for_R.csv", show_col_types = FALSE)
 glimpse(bellevue)
@@ -41,10 +42,12 @@ ggplot(emigrants_by_month, aes(x = month, y = n)) +
 
 # QUESTION: What happens after May 1847? Write down what you think it means
 # before you run the next section.
+## Admissions for 'recent emigrant' drastically plummeted. Could mean that this was reclassified, could mean that almshouse saw less business
+
 
 
 #### 2. Did the immigrants stop coming? ####
-
+  # 
 # Count ALL admissions by month, split into "recent emigrant" and everything else.
 all_by_month <- bellevue %>%
   mutate(month  = floor_date(date_in, "month"),
@@ -83,11 +86,11 @@ bellevue %>%
 #     taller than their neighbors? (Try binwidth = 1.) Look at the far right too:
 #     is every age believable? What should a historian do with them?
 ggplot(bellevue, aes(x = age_standard)) +
-  geom_histogram(binwidth = 5)
+  geom_histogram(binwidth = 1)
 
 # (c) Ages by gender (a boxplot). Try geom_violin() instead of geom_boxplot().
 ggplot(bellevue, aes(x = gender, y = age_standard)) +
-  geom_boxplot()
+  geom_violin()
 
 # (d) Reasons over time, one small graph per reason (facets). Compare "sickness"
 #     and "recent emigrant" after June 1847. What might be going on?
@@ -108,3 +111,4 @@ bellevue %>%
   geom_col()
 
 # (f) Choose one of the above visualizations to save to your new output/exercise2/ directory. Commit, then push to GitHub.
+ggsave("output/exercise2/bellevue_occupation_by_gender.png", width = 8, height = 5)
