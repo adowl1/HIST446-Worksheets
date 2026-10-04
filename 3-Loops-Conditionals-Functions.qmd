@@ -159,14 +159,11 @@ for (first_five in 1:length(titles)) {
 (@) Can you modify the above loop to only print titles that contain the word "Bar"? (Hint: use grepl() to search for "Bar" in the title)
 ```{r}
 titles <- gayguides$title
-for (location in 1:length(titles)) {
-  if (grepl(titles, "bar", ignore.case = TRUE, perl = FALSE, fixed = FALSE, useBytes = FALSE) == TRUE) {
-    print(location)
-  }
-}
-grepl(gayguides$title, "bar")
-```
+titles <- titles[grep("Bar", gayguides$title, ignore.case = TRUE)]
 
+print(titles)
+
+```
 Sometimes we want our loop to terminate itself early. There are two statements that help us do that: 
 
 * `next` exits the current iteration
@@ -196,11 +193,20 @@ for (i in 1:10) {
 
 (@) What happened here? Why did the loop only print 3 and 4? 
 
->
+> # once i = 5, the loop was exited. since 1, 2 were less than three, they were not printed
 
 (@) What if we wanted to loop through the gay guides data? Can you write a loop that iterates through the cities in the Gay Guides data and returns the title of any location in Greenville? 
 ```{r}
-
+greenville_city <- gayguides$city == "Greenville"
+titles <- gayguides$title
+gayguides[greenville_city & titles]
+```
+``` {r}
+for (i in retry_titles) {
+  if (i == TRUE)
+    next
+  print(i)
+}
 ```
 
 (@) The Gay Guides data is quite large (60,000+ entries). Write a loop that searches through the data and finds the first 5 locations in New York City. Your loop should:
