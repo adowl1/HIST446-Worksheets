@@ -201,6 +201,7 @@ greenville_city <- gayguides$city == "Greenville"
 titles <- gayguides$title
 gayguides[greenville_city & titles]
 ```
+
 ``` {r}
 for (i in retry_titles) {
   if (i == TRUE)
