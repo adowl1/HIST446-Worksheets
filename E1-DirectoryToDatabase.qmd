@@ -153,7 +153,7 @@ by_hand
 
 (@) Your table has no row for Naomi, Pauline, or Anna, the wives in parentheses, and no column for a second job (look a few lines further down at Chas. S. Davis). What did the directory's publisher decide about women in these households? What could you do differently when building this table?
 
->
+> Directory's publisher decided that these wives' lives were only important within the context of their husbands. One way this could be addressed is through a logical spouse column, with potentially a note in the notes column with their name. For the second job instance, this could also go in the notes column.
 
 ------------------------------------------------------------------------
 
@@ -210,7 +210,7 @@ by_machine %>%
 
 (@) Compare the machine's rows for your six people with your hand transcription. Where does the machine disagree with you? Look especially at Calvin Davis, whose entry begins with an odd mark in the OCR text, and at Chas. S. Davis, whose entry runs over three lines.
 
->
+> chas does not have an address in the address column, but the address does show up in the entry column. Machine has a column for spouse. Chas s. Davis' entry with relevant info is cut off.
 
 (@) `count()` tallies rows. Run the code below.
 
@@ -221,12 +221,12 @@ by_machine %>% count(is.na(address))
 (@) What share of entries has no `address`? Use `filter(is.na(address))`).
 
 ```{r}
-
+#389/445 = 87.4%
 ```
 
 (@) Pick two of the entries without addresses and try to explain why the parser failed.
 
->
+> entry 83: potentially failed because the parser is reading the address as 4-25 E main. instead of 425 E Main. entry 22: potentially failed because the 1/2 in the address is throwing off the parser?
 
 ------------------------------------------------------------------------
 
@@ -294,7 +294,7 @@ shared
 Look at the top of the list. "same" isn't an address: it's the directory's shorthand for "lives at the business address just given" (look for "res. same" in the text). It's a value that looks like data but has to be interpreted. For now we'll set it aside, and ask who lived at the most crowded **real** address by joining all three tables back together:
 
 ```{r}
-crowded <- shared %>% filter(address != "same") %>% slice(1)   # slice(1) keeps the first row
+crowded <- shared %>% filter(address != "same") %>% slice(3)   # slice(1) keeps the first row
 
 residences %>%
   filter(address_id == crowded$address_id) %>%
@@ -305,19 +305,20 @@ residences %>%
 
 (@) Seven people "live" at `same`. Write down what you'd do with those rows in a real project: delete them, look up the business address from each entry, or something else? What would each choice do to a count of shared addresses?
 
->
+> i would look up the business address from each entry and make a note of it in my notes column so that there is as much transparency that these business addresses are the same as residental addresses. I think deleting just scrapes that data that is still relevant even if it's shared and lose data. Looking up the business address without emphasizing that it is a special case also misses out on potential context that could prove interesting for a future direction.
 
 (@) The same surname at the same address suggests a family, but the database only **records** a shared address. Pick one shared address from `shared`. What might the people there be to each other? What could you check (another page, another year of the directory, the census) to find out? What does the `housing` column (`res` vs. `rooms` vs. `bds`) add?
 
->
+> Did the three people at 200 wysor -- slice(3). This could potentially be a father + 2 sons, father + uncle and son, or three brothers. Potentially a later page under the directory of householders index (721)? Or potentially cross reference with the business directory 873?
 
 (@) Freedom on the Move stores names in their own table (`enslaved_person_name`), with a column `is_alias`, because one person can appear under several names. Our `people` table has one name per person, and wives appear only inside parentheses. Sketch (in words) one more table you'd add to our database to fix one of these problems. What would one row be, and what would its columns be?
 
->
+> Row: entry that has a wife in parenthese columns: | given name | |potential_surname| |relation_id| |address_id| 
 
 (@) Our `asterisk` column comes from a racial classification the publisher printed next to some names. A database makes a column like that very easy to count, map, and join. Name one question a historian could responsibly ask with it, and one way it could be misused.
 
->
+> responsible: Where were non-white Muncie residents located within the city and how did that affect the Muncie directory's interpretation of their residencies and locations? (keeps the focus on the directory's interpretations and biases without playing into assumptions)
+misuse: misuse: How did the number of non-white Muncie residents affect the city? 
 
 ------------------------------------------------------------------------
 
