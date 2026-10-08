@@ -303,7 +303,7 @@ The following fixes don't change meaning or interpretation, so we'll do these fi
 
 (@) How many choices does each facet list now?
 
->
+> 15 and 15
 
 ### The hard fixes
 
@@ -327,7 +327,7 @@ hard_cases %>% filter(left_kinship == "slave") %>% pull(transcription) %>% cat(s
 
 (@) Discuss with your pair or group: Who is John Halsey, and why is he in a table of *runaways* and a table of *kinship*? What does this data point tell you about the difference between the database's categories and the historical relationship?
 
->
+> John Halsey ID: Former slaveholder of the runaway, sold her off. Kinship within the database is much broader than we typically think, which means it now includes a historical relationship without actual familial relations.
 
 (@) Now let's print all the ads from hard_cases to examine the other five rows:
 ```{r}
@@ -336,7 +336,7 @@ hard_cases %>% pull(transcription) %>% cat(sep = "\n\n----------\n\n")
 
 (@) All the other five rows come from the **same ad**, printed on different days and transcribed separately. What does the ad actually say about how George, Celia, and Sarah are related? What did each volunteer's markup add to, or take away from, what the ad says?
 
->
+> George Celia and Sarah are all of one family, that is it. Does not specify if george is a father/brother/uncle/etc. does not specify if celia and sarah are sisters/mother/daughter/aunt/niece etc. Volunteers who label with anything more specific than "family member" are adding their own interpretation of the info that is not necessarily supported by the advertisement.
 
 This advertisement was printed many times. Let's generate a subset table with all of the reprints of the advertisement. The subset's unit of analysis should be one row per person per printing.
 
