@@ -415,8 +415,8 @@ my_kinship_decisions <- tribble(
   # add your rows here
 )
 
-my_kinship_decisions
-```
+my_kinship_decisions %>% add_row(original='father', changed_to='Father',why='Same word, different capitalization') %>% add_row(original='husband', changed_to='Husband',why='Same word, different capitalization') %>% add_row(original='wife', changed_to='Wife',why='Same word, different capitalization') %>% add_row(original='son', changed_to='Son',why='Same word, different capitalization') %>% add_row(original='brother', changed_to='Brother',why='Same word, different capitalization') %>% add_row(original='sister', changed_to='Sister',why='Same word, different capitalization') %>% add_row(original='child', changed_to='Child',why='Same word, different capitalization') %>% add_row(original='father/brother', changed_to='Related Male family member',why='Previous one makes an assumption that it may be immediate family') %>% add_row(original='mother/sister', changed_to='Related Female family member',why='Previous one makes an assumption that it may be immediate family')
+``` 
 
 ### 3e. Save your work: the data and the edits history
 
@@ -470,7 +470,7 @@ passing %>% filter(ad_says_pass) %>% slice(1:3) %>% pull(transcription) %>% cat(
 
 (@) What words do the ads use where the database says `white passing`? Now read two ads where `ad_says_pass` is `FALSE` (change the code above). Why do you think the volunteer tagged them `white passing`?
 
->
+> Ad 1: white 'Negro' Man, very fair skin, passed as a white man. Ad 2: not very black, passes for a free man. Volunteer may have tagged it this way 
 
 Last, the most common term. How often does the ad itself use the word?
 
