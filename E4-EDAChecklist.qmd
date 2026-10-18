@@ -1,8 +1,8 @@
 ---
 title: "In-Class Exercise 4: An Exploratory Data Analysis Checklist"
 subtitle: "Roger Peng's checklist, applied to Freedom on the Move"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "10-18-26"
 format:
   html:
     theme: cosmo
@@ -67,7 +67,7 @@ FOTM can't answer that directly: it holds *advertisements*, not escapes.
 
 (@) Write your own sharp question about FOTM's advertisements: one that names exactly what you'd count or measure, and for what unit (an ad, a newspaper, a state, a decade...).
 
->
+> Which year saw the most advertisements published for runaway slaves?
 
 Save your question for a possible future investigation. For the purpose of learning Peng's checklist, we'll pursue a question this database can actually answer:
 
@@ -128,14 +128,14 @@ ads_place %>%
 (@) What did the `distinct()` function do in the chunk above?
 Hint: take a peak at the documentation for the function with `?distinct`.
 
->
+> Distinct kept only unique rows from the data frame. In this case, if two entries had the same title, city, state, it was cut. 
 
 (@) The `newspaper` table has 41,551 rows, but notice many different newspapers (unique pair of title + place) there are. So what is the **unit of analysis** in the `newspaper` table? In other words, what is one row? 
 
->
+> One row = One Newspaper title
 
 (@) Then find a title that appears in two places: did the paper move, are these two different papers, or is it an error? 
-
+> baltimore patriots appears multiple times. On examination of two different rows, it looks like the paper did not move, but these advertisements took place on different dates.
 ::: {.callout-tip}
 ## Tip:
 To answer the question, you need two things for each title: **where** it was published, and **when**. Build your chunk in three steps:
