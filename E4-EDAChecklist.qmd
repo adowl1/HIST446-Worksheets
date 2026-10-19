@@ -142,12 +142,12 @@ To answer the question, you need two things for each title: **where** it was pub
 
 1. **One row per title and place, with the evidence.** Start from `ads_place`, group by title and place, and summarize how many ads each one has and when they were published:
 
-```r
+```{r}
    ads_place %>%
-     group_by(______) %>%
+     group_by(newspaper, city, state) %>%
      summarize(ads   = n(),
-               first = min(________),
-               last  = max(________),
+               first = min(1),
+               last  = max(10),
                .groups = "drop")
 ```
 2. **Count places per title.** Pipe that into `add_count(_______)` so that each row shows how many places its title appears in.
