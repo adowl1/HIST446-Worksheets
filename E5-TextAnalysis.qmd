@@ -42,7 +42,7 @@ If you can't find any of the tools mentioned below, hover over the grey header o
 
 4. **Save your corpus.** Click the **Export** icon (a diskette) in the blue bar at the very top and copy the link. Then select **an HTML snippet for embedding this view in another web page**. That URL reopens this exact corpus later, so you don't have to upload it again. Copy the URL that starts after **src =**. Paste it here:
 
-> 
+> https://voyant-tools.org/?corpus=1286d126278dfd821b0db98d6436dd06&panels=corpusterms,reader,trends,summary,contexts
 
 ::: {.callout-warning}
 ## Keep in mind:
@@ -62,13 +62,13 @@ Open the **Documents** tab (bottom left).
 
 (@) What counts as a document in this corpus, and how many are there? Who made this decision?
 
->
+> One Issue = One Document, 24 documents. Voyant decided to make the document = one issue
 
 Now open **Summary** (same panel).
 
 (@) How many words and how many unique words does the corpus have? Which document is the longest and which the shortest?
 
-> 
+> 1,463,997 words total. 58,907 unique word forms. Longest doc in 1916-06_June, shortest doc is `1915-07_July.
 
 --------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ Look at **Cirrus**, then switch to the **Terms** tab (same panel) to see the sam
 
 (@) What are the five most frequent words? What does that tell you about the contents of the magazine?
 
->
+> city, new, american, street, water-- some sort of magazine about cities/public works
 
 --------------------------------------------------------------------------------
 
@@ -94,11 +94,12 @@ Scroll down the **Terms** table. Some "words" aren't words at all.
 
 (@) List at least four tokens in the top 50 that aren't real words, or don't mean what they seem to mean. For one of them, type it into the search box in **Contexts** (bottom right) and read a few lines. Where does it come from?
 
->
+> tion, ee, st, com.
+tion - it's the suffix of various other words but the OCR reads it as its own word. e.g, quesTION, naTION
 
 (@) *American* and *york* are near the top of the list. Use **Contexts** to find out why. Are they telling you something about the magazine's content?
 
->
+> American seems to consistently come in between The and City -- The American City. York is showing up for companies with addresses based in New York. Tells us that the audience is urban, new york is playing a big role in shaping it. Some of the publishing info is tied to NY as well.
 
 ### 3b. Edit the stopword list
 
@@ -111,7 +112,8 @@ Now make your own cleaning decisions:
 
 (@) Which words did you add to the stopword list, and why? Did you remove anything that might matter for a historian?
 
->
+> american, ing, ee, tion, com. I removed the ing, tion, com, to stem down the words to their roots and clean up data. ee is consistently tied to addresses somehow but looks like an OCR error. American is being cut because it is the title of the magazine itself so it shows up on practically every page which makes it difficult to find meaningful context for the word. 
+American may actually have implications for a historian if they have no indication before working with the text what the title of said text was. It may just come across as a urban planning magazine instead of a urban planning magazine for Americans.
 
 ### 3c. Lowercasing and word forms
 
@@ -124,7 +126,8 @@ Voyant lowercases every word automatically, so *City* and *city* are counted tog
 
 (@) How do the counts change across these four searches? When would combining word forms be useful for a historian, and when would it hide something? (Remember the slide's example: stemming *nations* and *national* to *nation*.)
 
->
+> playground -> playground* = nearly 300 more terms in the count
+>city|cities adds the count of both terms. C
 
 ------------------------------------------------------------------------
 
