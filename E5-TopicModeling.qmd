@@ -1,8 +1,8 @@
 ---
 title: "In-Class Exercise 5, Part 2: Topic Modeling *The American City*"
 subtitle: "A first topic model in R"
-author: ""
-date: ""
+author: "AJ Dowling"
+date: "10-21-26"
 format:
   html:
     theme: cosmo
@@ -83,7 +83,7 @@ nrow(tokens)
 
 **Q1. Discuss with your pair or group:** How many words does R count in the corpus? Compare that with the total Voyant gave you in Part 1 of `E5-TextAnalysis.qmd`. If the numbers differ, why might two programs count the "same" words differently?
 
->
+> different in tokenizing
 
 ------------------------------------------------------------------------
 
@@ -108,7 +108,8 @@ chunk_info
 
 **Q2. Discuss with your pair or group:** How many documents do we have now? What do we gain from chunking, and what might we lose?
 
->
+> context, cutting up articles
+getting more units of analysis, figuring out what's talked about most.
 
 ------------------------------------------------------------------------
 
@@ -123,7 +124,7 @@ Like we did on Monday with Voyant's stopword list, we need to make decisions abo
 
 ```{r}
 # Chunk 6
-my_stopwords <- c("ing", "tion", "con", "ment")   # word fragments from line breaks; add your own
+my_stopwords <- c("ing", "tion", "con", "ment", "american", "city", "new", "york")   # word fragments from line breaks; add your own
 
 words <- tokens %>%
   anti_join(stop_words, by = "word") %>%
@@ -136,7 +137,7 @@ words %>% count(word, sort = TRUE)
 
 **Q3. Discuss with your pair or group:** Look at the 50 most frequent words above. Which junk tokens from Voyant (Part 3 of `E5-TextAnalysis.qmd`) and which others you see now would you add to `my_stopwords`? Is there a reason you can think of to remove any real words from this corpus? Which ones and why?
 
->
+>  city york american new --> tied to name of magazine and place of publication
 
 ------------------------------------------------------------------------
 
@@ -159,7 +160,7 @@ dtm
 
 **Q4. Discuss with your pair or group:** How many documents and how many different words (terms) are in the matrix? The output says most cells are empty (that's what **sparsity** means). Why would most words be missing from most 1,000-word chunks?
 
->
+> 
 
 ------------------------------------------------------------------------
 
@@ -208,12 +209,12 @@ top_terms %>%
 ```{r}
 # Chunk 10
 topic_labels <- c(
-  "1" = "",
-  "2" = "",
-  "3" = "",
-  "4" = "",
-  "5" = "",
-  "6" = "",
+  "1" = "Organization and Associations",
+  "2" = "Fire Safety Infrastructure",
+  "3" = "Paving and Road Construction",
+  "4" = "Zoning and Design",
+  "5" = "Advertising",
+  "6" = "Government and Civic Engagement",
   "7" = "",
   "8" = "",
   "9" = "",
@@ -269,7 +270,7 @@ This chunk finds the three chunks with the highest share of one topic and prints
 
 ```{r}
 # Chunk 14
-my_topic <- 1   # change this
+my_topic <- 3 # change this
 
 top_chunks <- doc_topics %>%
   filter(topic == my_topic) %>%
